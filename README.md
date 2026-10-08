@@ -1,4 +1,4 @@
-#FuelEfficiencyCalculator
+# FuelEfficiencyCalculator
 
 A Java calculator for calculating fuel efficiency
 
