@@ -49,4 +49,8 @@ public class receipt {
     public void setDate(LocalDate date) {
 	Date = date;
     }
+
+    public String getData() {
+	return id+','+volume+','+price+','+Date.toString();
+    }
 }
