@@ -2,16 +2,16 @@ package com.fuelEfficency.classes;
 
 import java.time.LocalDate;
 
-public class receipts {
+public class receipt {
     private int id;
     private double volume; //    In Litres
     private double price;
     private LocalDate Date;
 
-    public receipts() {
+    public receipt() {
     }
 
-    public receipts(int id, double volume, double price, LocalDate date) {
+    public receipt(int id, double volume, double price, LocalDate date) {
 	this.id = id;
 	this.volume = volume;
 	this.price = price;
