@@ -11,6 +11,9 @@ public class receiptDataSet {
 	this.receiptList = receiptList;
     }
 
+    public receiptDataSet() {
+    }
+
     public int getId() {
 	return id;
     }
