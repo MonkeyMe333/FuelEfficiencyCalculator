@@ -3,54 +3,46 @@ package com.fuelEfficency.classes;
 import java.time.LocalDate;
 
 public class Receipt {
-    private int id;
-    private double volume; //    In Litres
-    private double price;
-    private LocalDate Date;
+    private final double volume;
+    private final double price;
+    private final LocalDate Date;
 
-    public Receipt() {
-    }
-
-    public Receipt(int id, double volume, double price, LocalDate date) {
-	this.id = id;
+    public Receipt(double volume, double price, LocalDate date) {
 	this.volume = volume;
 	this.price = price;
 	Date = date;
-    }
-
-    public int getId() {
-	return id;
-    }
-
-    public void setId(int id) {
-	this.id = id;
     }
 
     public double getVolume() {
 	return volume;
     }
-
-    public void setVolume(double volume) {
-	this.volume = volume;
-    }
-
     public double getPrice() {
 	return price;
     }
-
-    public void setPrice(double price) {
-	this.price = price;
-    }
-
     public LocalDate getDate() {
 	return Date;
     }
 
-    public void setDate(LocalDate date) {
-	Date = date;
+    public String getData() {
+	return "," + volume + "," + price + "," + Date;
     }
 
-    public String getData() {
-	return id+','+volume+','+price+','+Date.toString();
+    public double getPricePerLitre() {
+	return price / volume;
+    }
+
+    public String getRoundedVolume() {
+	return String.format("%.2f", volume) + 'L';
+    }
+    public String getRoundedPrice() {
+	return String.format("%.2f", price) + '$';
+    }
+    public String getRoundedPricePerLitre() {
+	return String.format("%.2f", getPricePerLitre()) + "$/L";
+    }
+
+    @Override
+    public String toString() {
+	return getRoundedVolume() + " | " + getRoundedPrice() + " | " + getRoundedPricePerLitre();
     }
 }
