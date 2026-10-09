@@ -5,15 +5,15 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class receiptDataSet {
+public class ReceiptDataSet {
     private int id;
-    public static final Map<Integer, receipt> allReceipts = new LinkedHashMap<>();
+    public static final Map<Integer, Receipt> allReceipts = new LinkedHashMap<>();
 
-    public receiptDataSet(int id, List<receipt> receiptList) {
+    public ReceiptDataSet(int id, List<Receipt> receiptList) {
 	    this.id = id;
     }
 
-    public receiptDataSet() {
+    public ReceiptDataSet() {
     }
 
     public int getId() {
@@ -26,7 +26,7 @@ public class receiptDataSet {
 
     public List<String> getAll() {
         ArrayList<String> currentreceipts = new ArrayList<>();
-        for (receipt receipt : allReceipts.values()) {
+        for (Receipt receipt : allReceipts.values()) {
             if (receipt != null) {
                 currentreceipts.add(receipt.toString());
             }

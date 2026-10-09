@@ -1,15 +1,18 @@
-package com.fuelEfficency.classes;
+package com.fuelEfficency.controllers;
+
+import com.fuelEfficency.classes.Receipt;
+import com.fuelEfficency.classes.ReceiptDataSet;
 
 import java.io.*;
 import java.sql.Date;
 
-import static com.fuelEfficency.classes.receiptDataSet.allReceipts;
+import static com.fuelEfficency.classes.ReceiptDataSet.allReceipts;
 
-public class saveManager {
-    public void saveReceipts(receiptDataSet dataSet) {
+public class SaveManager {
+    public void saveReceipts(ReceiptDataSet dataSet) {
         try (FileWriter writer = new FileWriter("savedata.txt")) {
 
-            for (receipt receipt : allReceipts.values()) {
+            for (Receipt receipt : allReceipts.values()) {
                 writer.write(
                         receipt.getId() + "," +
                                 receipt.getPrice() + "," +
@@ -44,8 +47,8 @@ public class saveManager {
                 Date date = Date.valueOf(data[3]);
 
 
-                receipt receipt =
-                        new receipt(id, volume, price, date.toLocalDate());
+                Receipt receipt =
+                        new Receipt(id, volume, price, date.toLocalDate());
 
                 allReceipts.put(id, receipt);
             }
