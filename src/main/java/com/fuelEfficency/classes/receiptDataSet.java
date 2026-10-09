@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class receiptDataSet {
     private int id;
-    private final Map<Integer, receipt> allReceipts = new LinkedHashMap<>();
+    public static final Map<Integer, receipt> allReceipts = new LinkedHashMap<>();
 
     public receiptDataSet(int id, List<receipt> receiptList) {
 	    this.id = id;
