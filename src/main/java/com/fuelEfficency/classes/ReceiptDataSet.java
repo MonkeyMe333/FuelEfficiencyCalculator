@@ -1,26 +1,34 @@
 package com.fuelEfficency.classes;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 public class ReceiptDataSet {
-    public static final Map<Integer, Receipt> allReceipts = new LinkedHashMap<>();
-
-    public ReceiptDataSet(List<Receipt> receiptList) {
-    }
+    private final NavigableMap<Integer, Receipt> dataSet = new TreeMap<>();
 
     public ReceiptDataSet() {
     }
 
-    public List<String> getAll() {
-        ArrayList<String> currentreceipts = new ArrayList<>();
-        for (Receipt receipt : allReceipts.values()) {
-            if (receipt != null) {
-                currentreceipts.add(receipt.toString());
-            }
+    public void addReceipt(double volume, double price, LocalDate date) {
+        addReceipt(getLastKey() + 1, volume, price, date);
+    }
+
+    public void addReceipt(int id, double volume, double price, LocalDate date) {
+        dataSet.put(id, new Receipt(volume, price, date));
+    }
+
+    public void removeReceipt(int id) {
+        dataSet.remove(id);
+    }
+
+    public Map<Integer, Receipt> getAll() {
+        return dataSet;
+    }
+    public int getLastKey() {
+        try {
+            return dataSet.lastKey();
+        } catch (NoSuchElementException e) {
+            return 0;
         }
-        return currentreceipts;
     }
 }
