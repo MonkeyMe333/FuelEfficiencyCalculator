@@ -2,38 +2,33 @@ package com.fuelEfficency.controllers;
 
 import com.fuelEfficency.classes.Receipt;
 import com.fuelEfficency.classes.ReceiptDataSet;
-
 import java.io.*;
-import java.sql.Date;
-
-import static com.fuelEfficency.classes.ReceiptDataSet.allReceipts;
+import java.time.LocalDate;
+import java.util.Map;
 
 public class SaveManager {
-    public void saveReceipts(ReceiptDataSet dataSet) {
-        try (FileWriter writer = new FileWriter("savedata.txt")) {
-
-            for (Receipt receipt : allReceipts.values()) {
-                writer.write(
-                        receipt.getId() + "," +
-                                receipt.getPrice() + "," +
-                                receipt.getVolume() + "," +
-                                receipt.getDate() + "\n"
+    public static void saveReceipts(ReceiptDataSet dataSet) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("savedata.csv"))) {
+	    for (Map.Entry<Integer, Receipt> entry : dataSet.getAll().entrySet()) {
+		bufferedWriter.write(
+                        entry.getKey() + entry.getValue().getData()
                 );
-            }
-        } catch (IOException e) {
+		bufferedWriter.newLine();
+	    }
+	} catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
-    public void loadReceipts() {
-        File file = new File("savedata.txt");
+    public static ReceiptDataSet loadReceipts() {
+        ReceiptDataSet dataSet = new ReceiptDataSet();
+        File file = new File("savedata.csv");
 
         if (!file.exists()) {
-            return;
+            return dataSet;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("savedata.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("savedata.csv"))) {
 
             String line;
 
@@ -44,17 +39,14 @@ public class SaveManager {
                 int id = Integer.parseInt(data[0]);
                 double price = Double.parseDouble(data[1]);
                 double volume = Double.parseDouble(data[2]);
-                Date date = Date.valueOf(data[3]);
+                LocalDate date = LocalDate.parse(data[3]);
 
-
-                Receipt receipt =
-                        new Receipt(id, volume, price, date.toLocalDate());
-
-                allReceipts.put(id, receipt);
+                dataSet.addReceipt(id, volume, price, date);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+	return dataSet;
     }
 }
