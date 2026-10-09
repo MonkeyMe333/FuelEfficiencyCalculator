@@ -15,19 +15,6 @@ public class Receipt {
 	Date = date;
     }
 
-    public double getVolume() {
-	return volume;
-    }
-    public double getPrice() {
-	return price;
-    }
-    public double getDistance() {
-	return distance;
-    }
-    public LocalDate getDate() {
-	return Date;
-    }
-
     public String getData() {
 	return "," + volume + "," + price + "," + Date;
     }
