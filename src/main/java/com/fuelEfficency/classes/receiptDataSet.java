@@ -13,6 +13,9 @@ public class receiptDataSet {
 	    this.id = id;
     }
 
+    public receiptDataSet() {
+    }
+
     public int getId() {
 	    return id;
     }
