@@ -5,11 +5,13 @@ import java.time.LocalDate;
 public class Receipt {
     private final double volume;
     private final double price;
+    private final double distance; // distance traveled since last fill in km
     private final LocalDate Date;
 
-    public Receipt(double volume, double price, LocalDate date) {
+    public Receipt(double volume, double price, double distance, LocalDate date) {
 	this.volume = volume;
 	this.price = price;
+	this.distance = distance;
 	Date = date;
     }
 
@@ -18,6 +20,9 @@ public class Receipt {
     }
     public double getPrice() {
 	return price;
+    }
+    public double getDistance() {
+	return distance;
     }
     public LocalDate getDate() {
 	return Date;
@@ -31,6 +36,10 @@ public class Receipt {
 	return price / volume;
     }
 
+    public double getKmPerLitre() {
+	return distance / volume;
+    }
+
     public String getRoundedVolume() {
 	return String.format("%.2f", volume) + 'L';
     }
@@ -40,9 +49,13 @@ public class Receipt {
     public String getRoundedPricePerLitre() {
 	return String.format("%.2f", getPricePerLitre()) + "$/L";
     }
+    public String getRoundedKmPerLitre() {
+	return String.format("%.2f", getKmPerLitre()) + "km/L";
+
+    }
 
     @Override
     public String toString() {
-	return getRoundedVolume() + " | " + getRoundedPrice() + " | " + getRoundedPricePerLitre();
+	return getRoundedVolume() + " | " + getRoundedPrice() + " | " + getRoundedPricePerLitre() + " | " + getRoundedKmPerLitre();
     }
 }

@@ -9,12 +9,12 @@ public class ReceiptDataSet {
     public ReceiptDataSet() {
     }
 
-    public void addReceipt(double volume, double price, LocalDate date) {
-        addReceipt(getLastKey() + 1, volume, price, date);
+    public void addReceipt(double volume, double price, double distance, LocalDate date) {
+        addReceipt(getLastKey() + 1, volume, price, distance, date);
     }
 
-    public void addReceipt(int id, double volume, double price, LocalDate date) {
-        dataSet.put(id, new Receipt(volume, price, date));
+    public void addReceipt(int id, double volume, double price, double distance, LocalDate date) {
+        dataSet.put(id, new Receipt(volume, price, distance, date));
     }
 
     public void removeReceipt(int id) {

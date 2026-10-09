@@ -8,8 +8,9 @@ public class CRUD {
     public static void createReceipt(ReceiptDataSet dataSet) {
         double volume = Menu.getDouble("Volume in Litres");
         double price = Menu.getDouble("Price in Dollars");
+        double distance = Menu.getDouble("Distance in km");
         LocalDate date = Menu.getDate();
-        dataSet.addReceipt(volume, price, date);
+        dataSet.addReceipt(volume, price, distance, date);
     }
 
     public static void readReceipts(ReceiptDataSet dataSet) {
@@ -28,8 +29,9 @@ public class CRUD {
         }
         double volume = Menu.getDouble("Volume in Litres");
         double price = Menu.getDouble("Price in Dollars");
+        double distance = Menu.getDouble("Distance in km");
         LocalDate date = Menu.getDate();
-        dataSet.addReceipt(id, volume, price, date);
+        dataSet.addReceipt(id, volume, price, distance, date);
     }
 
     public static void deleteReceipt(ReceiptDataSet dataSet) {
