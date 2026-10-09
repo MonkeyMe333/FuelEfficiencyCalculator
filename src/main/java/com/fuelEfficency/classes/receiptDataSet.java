@@ -1,29 +1,33 @@
 package com.fuelEfficency.classes;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class receiptDataSet {
     private int id;
-    private List<receipt> receiptList;
+    private final Map<Integer, receipt> allReceipts = new LinkedHashMap<>();
 
     public receiptDataSet(int id, List<receipt> receiptList) {
-	this.id = id;
-	this.receiptList = receiptList;
+	    this.id = id;
     }
 
     public int getId() {
-	return id;
+	    return id;
     }
 
     public void setId(int id) {
 	this.id = id;
     }
 
-    public List<receipt> getReceiptList() {
-	return receiptList;
-    }
-
-    public void setReceiptList(List<receipt> receiptList) {
-	this.receiptList = receiptList;
+    public List<String> getAll() {
+        ArrayList<String> currentreceipts = new ArrayList<>();
+        for (receipt receipt : allReceipts.values()) {
+            if (receipt != null) {
+                currentreceipts.add(receipt.toString());
+            }
+        }
+        return currentreceipts;
     }
 }

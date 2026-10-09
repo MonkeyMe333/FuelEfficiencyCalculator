@@ -7,7 +7,7 @@ public class saveManager {
     public void saveInventory(receiptDataSet dataSet) {
         try (FileWriter writer = new FileWriter("savedata.txt")) {
 
-            for (receipt receipt : dataSet.values()) {
+            for (receipt receipt : dataSet.getReceiptList().values()) {
                 writer.write(
                         receipt.getId() + "," +
                                 receipt.getPrice() + "," +
