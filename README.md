@@ -1,6 +1,6 @@
 # FuelEfficiencyCalculator
 
-A Java calculator for calculating fuel efficiency
+A Java calculator for calculating and tracking fuel efficiency
 
 Requirements:
 
