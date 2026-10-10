@@ -15,7 +15,7 @@ public class CRUD {
 
     public static void readReceipts(ReceiptDataSet dataSet) {
         dataSet.getAll().forEach((id, receipt) ->
-                IO.println("Id: " + id + "\t| "+ receipt.toString())
+                IO.println("Id: " + id + " | "+ receipt.toString())
         );
     }
 
