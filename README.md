@@ -13,10 +13,6 @@ FE 03
 FE 04
 
 
-
-
-
-
 Assignment:
 
 Our workflow was never editing the same file at the same time, but when a merge conflict warning showed up, we both checked over the merged files and ensured that nothing important was broken. 
