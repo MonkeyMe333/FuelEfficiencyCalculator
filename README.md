@@ -12,7 +12,6 @@ FE 03
 
 FE 04
 
-\n\n\n\n
 
 Assignment:
 
